@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export default class SavedList extends Component {
   constructor(props) {
     super(props);
+    this.state = {}
   }
 
   render() {
@@ -11,9 +12,15 @@ export default class SavedList extends Component {
       <div className="saved-list">
         <h3>Saved Movies:</h3>
         {this.props.list.map(movie => (
-          <span className="saved-movie">{movie.title}</span>
+          <span className="saved-movie">
+            <NavLink to={`/movies/${movie.id}`}>{movie.title}</NavLink>
+          </span>
         ))}
-        <Link to="/" className="home-button">Home</Link>
+        <div className="list-buttons">
+          <Link to="/" className="home-button">Home</Link>
+          <div onClick={this.props.clearList} className="clear-button">Clear</div>
+        </div>
+        
       </div>
     );
   }
