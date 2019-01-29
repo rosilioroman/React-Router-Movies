@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 export default function SavedList(props) {
@@ -6,7 +6,7 @@ export default function SavedList(props) {
     <div className="saved-list">
       <h3>Saved Movies:</h3>
       {props.list.map(movie => (
-        <span className="saved-movie">
+        <span keyt={movie.id} className="saved-movie">
           <NavLink to={`/movies/${movie.id}`}>{movie.title}</NavLink>
         </span>
       ))}
